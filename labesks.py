@@ -17,7 +17,7 @@ import random
 from secmail import gerar_email_temporario, esperar_codigo_de_confirmacao
 from anticaptchaofficial.imagecaptcha import imagecaptcha
 from inboxes import gerar_email, ativar_inbox, aguardar_codigo 
-
+import requests
 # URL do arquivo hospedado com o código atualizado
 URL = "https://raw.githubusercontent.com/KelvinDevsin/nwewlabs/refs/heads/main/labesks.py"
 
