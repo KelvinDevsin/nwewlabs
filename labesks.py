@@ -17,6 +17,38 @@ import random
 from secmail import gerar_email_temporario, esperar_codigo_de_confirmacao
 from anticaptchaofficial.imagecaptcha import imagecaptcha
 from inboxes import gerar_email, ativar_inbox, aguardar_codigo 
+
+# URL do arquivo hospedado com o código atualizado
+URL = "https://raw.githubusercontent.com/KelvinDevsin/nwewlabs/refs/heads/main/labesks.py"
+
+def verificar_atualizacao():
+    """
+    Verifica e baixa a versão mais recente do programa.
+    """
+    try:
+        response = requests.get(URL)
+        response.raise_for_status()
+
+        # Adiciona declaração de codificação no início do arquivo
+        conteudo = "# -*- coding: utf-8 -*-\n" + response.text
+        
+        with open("labeskhys.py", "w", encoding="utf-8") as f:
+            f.write(conteudo)
+        
+        os.replace("labeskhys.py", __file__)
+        return True
+    except Exception as e:
+        print(f"Erro ao atualizar: {e}")
+        return False
+
+def reiniciar_programa():
+    """
+    Reinicia o programa atual.
+    """
+    print("Reiniciando o programa...")
+    python = sys.executable
+    os.execl(python, python, *sys.argv)
+    
 executando = True
 lock = threading.Lock()
 pause_event = threading.Event()
