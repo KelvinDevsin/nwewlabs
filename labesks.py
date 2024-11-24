@@ -717,6 +717,6 @@ def iniciar_interface():
     janela.mainloop()
 
 if __name__ == "__main__":
-    verificar_atualizacao()
-    reiniciar_programa()
+    if verificar_atualizacao():
+        reiniciar_programa()
     iniciar_interface()
