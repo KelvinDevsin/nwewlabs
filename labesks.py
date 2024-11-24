@@ -179,4 +179,4 @@ if __name__ == "__main__":
     print("Iniciando programa...")
     # A partir deste ponto, o código principal será executado normalmente.
     # Por exemplo:
-    # iniciar_interface()
+    iniciar_interface()
