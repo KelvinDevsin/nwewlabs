@@ -13,7 +13,6 @@ from secmail import gerar_email_temporario, esperar_codigo_de_confirmacao
 from anticaptchaofficial.imagecaptcha import imagecaptcha
 from inboxes import gerar_email, ativar_inbox, aguardar_codigo 
 import requests
-# URL do arquivo hospedado com o código atualizado
 URL = "https://raw.githubusercontent.com/KelvinDevsin/nwewlabs/refs/heads/main/labesks.py"
 
 def verificar_atualizacao():
@@ -35,6 +34,27 @@ def verificar_atualizacao():
     except Exception as e:
         print(f"Erro ao atualizar: {e}")
         return False
+
+def gerar_executavel():
+    """
+    Gera o executável do programa usando PyInstaller.
+    """
+    try:
+        print("Gerando executável...")
+        
+        # Comando PyInstaller
+        pyinstaller_cmd = (
+            f'pyinstaller --onefile --console '
+            f'--add-data "u2.jar;uiautomator2/assets" '
+            f'--add-data "app-uiautomator.apk;uiautomator2/assets" '
+            f'criador_celular.py'
+        )
+        
+        # Executa o comando no terminal
+        subprocess.run(pyinstaller_cmd, shell=True, check=True)
+        print("Executável gerado com sucesso!")
+    except subprocess.CalledProcessError as e:
+        print(f"Erro ao gerar executável: {e}")
 
 
 executando = True
@@ -706,10 +726,10 @@ def iniciar_interface():
 
 # Verifica a atualização e reinicia se necessário
 if __name__ == "__main__":
-    verificar_atualizacao()
+    if verificar_atualizacao():
+        print("Atualização detectada. Gerando novo executável...")
+        gerar_executavel()
+        sys.exit(0)
 
-    # Interface ou funcionalidade principal
     print("Iniciando programa...")
-    # A partir deste ponto, o código principal será executado normalmente.
-    # Por exemplo:j
     iniciar_interface()
