@@ -32,13 +32,6 @@ def verificar_atualizacao():
         print(f"Erro ao atualizar: {e}")
         return False
 
-def reiniciar_programa():
-    """
-    Reinicia o programa atual.
-    """
-    print("Reiniciando o programa...")
-    python = sys.executable
-    os.execl(python, python, *sys.argv)
 
 # Função para ativar/desativar modo avião
 def alternar_modo_aviao(device_id):
