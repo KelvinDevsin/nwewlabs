@@ -26,7 +26,7 @@ def verificar_atualizacao():
         with open("criador_celular_atualizado.py", "w", encoding="utf-8") as f:
             f.write(conteudo)
         
-        os.replace("criador_celular_atualizado.py", __file__)
+        # Se o arquivo foi atualizado, retorna True
         return True
     except Exception as e:
         print(f"Erro ao atualizar: {e}")
@@ -169,7 +169,14 @@ def iniciar_interface():
 
     janela.mainloop()
 
+# Verifica a atualização e reinicia se necessário
 if __name__ == "__main__":
     if verificar_atualizacao():
+        print("Atualização detectada. Reiniciando...")
         reiniciar_programa()
-    iniciar_interface()
+
+    # Interface ou funcionalidade principal
+    print("Iniciando programa...")
+    # A partir deste ponto, o código principal será executado normalmente.
+    # Por exemplo:
+    # iniciar_interface()
