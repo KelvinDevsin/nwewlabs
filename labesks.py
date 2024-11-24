@@ -178,5 +178,5 @@ if __name__ == "__main__":
     # Interface ou funcionalidade principal
     print("Iniciando programa...")
     # A partir deste ponto, o código principal será executado normalmente.
-    # Por exemplo:
+    # Por exemplo:j
     iniciar_interface()
