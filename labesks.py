@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import time
 import uiautomator2 as u2
 import os
@@ -13,49 +14,6 @@ from secmail import gerar_email_temporario, esperar_codigo_de_confirmacao
 from anticaptchaofficial.imagecaptcha import imagecaptcha
 from inboxes import gerar_email, ativar_inbox, aguardar_codigo 
 import requests
-URL = "https://raw.githubusercontent.com/KelvinDevsin/nwewlabs/refs/heads/main/labesks.py"
-
-def verificar_atualizacao():
-    """
-    Verifica e baixa a versão mais recente do programa.
-    """
-    try:
-        response = requests.get(URL)
-        response.raise_for_status()
-
-        # Adiciona declaração de codificação no início do arquivo
-        conteudo = "# -*- coding: utf-8 -*-\n" + response.text
-        
-        with open("criador_celular.py", "w", encoding="utf-8") as f:
-            f.write(conteudo)
-        
-        # Se o arquivo foi atualizado, retorna True
-        return True
-    except Exception as e:
-        print(f"Erro ao atualizar: {e}")
-        return False
-
-def gerar_executavel():
-    """
-    Gera o executável do programa usando PyInstaller.
-    """
-    try:
-        print("Gerando executável...")
-        
-        # Comando PyInstaller
-        pyinstaller_cmd = (
-            f'pyinstaller --onefile --console '
-            f'--add-data "u2.jar;uiautomator2/assets" '
-            f'--add-data "app-uiautomator.apk;uiautomator2/assets" '
-            f'criador_celular.py'
-        )
-        
-        # Executa o comando no terminal
-        subprocess.run(pyinstaller_cmd, shell=True, check=True)
-        print("Executável gerado com sucesso!")
-    except subprocess.CalledProcessError as e:
-        print(f"Erro ao gerar executável: {e}")
-
 
 executando = True
 lock = threading.Lock()
@@ -726,10 +684,4 @@ def iniciar_interface():
 
 # Verifica a atualização e reinicia se necessário
 if __name__ == "__main__":
-    if verificar_atualizacao():
-        print("Atualização detectada. Gerando novo executável...")
-        gerar_executavel()
-        sys.exit(0)
-
-    print("Iniciando programa...")
     iniciar_interface()
