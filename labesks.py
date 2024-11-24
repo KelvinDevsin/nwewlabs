@@ -1,4 +1,8 @@
-# -*- coding: utf-8 -*-
+
+# ESSE CODIGO É USADO PARA CELULAR VIA USB
+
+
+
 import time
 import uiautomator2 as u2
 import os
@@ -13,8 +17,6 @@ import random
 from secmail import gerar_email_temporario, esperar_codigo_de_confirmacao
 from anticaptchaofficial.imagecaptcha import imagecaptcha
 from inboxes import gerar_email, ativar_inbox, aguardar_codigo 
-import requests
-
 executando = True
 lock = threading.Lock()
 pause_event = threading.Event()
@@ -127,7 +129,9 @@ def criar_conta_instagram_lite(d, device_id):
             time.sleep(2)
             # PERMISSÃO
             d.xpath('//android.widget.Button[@resource-id="com.android.permissioncontroller:id/permission_allow_button"]').click(timeout=8)
-
+            time.sleep(2)
+            # PERMISSÃO
+            d.xpath('//android.widget.Button[@resource-id="com.android.permissioncontroller:id/permission_allow_button"]').click(timeout=8)
             # Clica START
             botao_entrar = d.xpath('//android.widget.Button[@resource-id="com.polestar.super.clone:id/btn_start"]').get()
             botao_entrar.click()
@@ -388,7 +392,7 @@ def criar_conta_instagram_lite(d, device_id):
                         if d.xpath('//android.widget.FrameLayout[@content-desc="Perfil"]').exists:
                             time.sleep(1)
                             print("clicando em perfil")
-                            '''
+                            
                             d.xpath('//android.widget.FrameLayout[@content-desc="Perfil"]').click()
                             try:
                                 # As notificações estão desativadas no momento
@@ -457,12 +461,13 @@ def criar_conta_instagram_lite(d, device_id):
                             # Clica em "Avançar"
                             d.xpath('//android.view.View[@content-desc="Avançar"]').click(timeout=1)
                             time.sleep(2)
-                            '''
+                            
                             with open("contas.txt", "a") as file:
                                 #file.write(f"{chave_dinamica}\n")
                                 email_username = email_copied.split('@')[0]
+                                file.write(f"{chave_dinamica}\n")
                                 file.write(f"{email_username}\n")
-                                file.write("Kelvin2002\n")
+                                file.write(f"{senha}\n")
                             reiniciar_aplicativo(d)
                             time.sleep(1)
                             break
@@ -682,6 +687,5 @@ def iniciar_interface():
 
     janela.mainloop()
 
-# Verifica a atualização e reinicia se necessário
 if __name__ == "__main__":
     iniciar_interface()
