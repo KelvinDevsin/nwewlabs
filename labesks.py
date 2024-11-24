@@ -120,7 +120,7 @@ def iniciar_interface():
         global executando
         device_id = entrada_device_id.get().strip()
         if not device_id:
-            label_status.configure(text="Insira o Device ID antes de iniciar.", text_color="red")
+            label_status.configure(text="Insira o Device ID antes de kkkkkkkkkkkkkkkkkkkkkkkkkk.", text_color="red")
             return
 
         salvar_device_id(device_id)
