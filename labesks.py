@@ -656,7 +656,7 @@ def iniciar_interface():
     janela.protocol("WM_DELETE_WINDOW", fechar_janela)
 
     # Entrada para o Device ID
-    label_device_id = ctk.CTkLabel(janela, text="Device ID:")
+    label_device_id = ctk.CTkLabel(janela, text="Device ID:TE AMO")
     label_device_id.pack(pady=(10, 0))
     entrada_device_id = ctk.CTkEntry(janela, width=250)
     entrada_device_id.pack(pady=(0, 10))
