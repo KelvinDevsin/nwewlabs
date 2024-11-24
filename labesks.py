@@ -23,7 +23,7 @@ def verificar_atualizacao():
         # Adiciona declaração de codificação no início do arquivo
         conteudo = "# -*- coding: utf-8 -*-\n" + response.text
         
-        with open("criador_celular_atualizado.py", "w", encoding="utf-8") as f:
+        with open("criador_celular.py", "w", encoding="utf-8") as f:
             f.write(conteudo)
         
         # Se o arquivo foi atualizado, retorna True
@@ -143,7 +143,7 @@ def iniciar_interface():
     janela.geometry("400x300")
     janela.protocol("WM_DELETE_WINDOW", fechar_janela)
 
-    label_device_id = ctk.CTkLabel(janela, text="Device ID:")
+    label_device_id = ctk.CTkLabel(janela, text="Device ID:KKKKKKKKKKKKKKKKKKKKKK")
     label_device_id.pack(pady=(10, 0))
     entrada_device_id = ctk.CTkEntry(janela, width=250)
     entrada_device_id.pack(pady=(0, 10))
@@ -164,9 +164,7 @@ def iniciar_interface():
 
 # Verifica a atualização e reinicia se necessário
 if __name__ == "__main__":
-    if verificar_atualizacao():
-        print("Atualização detectada. Reiniciando...")
-        reiniciar_programa()
+    verificar_atualizacao()
 
     # Interface ou funcionalidade principal
     print("Iniciando programa...")
